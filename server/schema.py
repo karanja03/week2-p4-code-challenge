@@ -15,7 +15,7 @@ class HeroesSchema(SQLAlchemyAutoSchema):
 
 
 # Create instances of the Restaurant schema for single and multiple objects
-heroes_schema = HeroesSchema()
+hero_schema = HeroesSchema()
 heroes_schema = HeroesSchema(many=True)
 
 
@@ -31,7 +31,7 @@ class PowersSchema(SQLAlchemyAutoSchema):
 
 
 # Create instances of the Pizza schema for single and multiple objects
-powers_schema = PowersSchema()
+power_schema = PowersSchema()
 powers_schema = PowersSchema(many=True)
 
 
@@ -48,5 +48,5 @@ class  HeroesPowersSchema(SQLAlchemyAutoSchema):
 
 
 # Create instances of the Pizza schema for single and multiple objects
-hersoespower_schema = HeroesPowersSchema()
-hersoespower_schema = HeroesPowersSchema(many=True)
+heroespower_schema = HeroesPowersSchema()
+heroespowers_schema = HeroesPowersSchema(many=True)
