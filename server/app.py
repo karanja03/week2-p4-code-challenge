@@ -1,36 +1,22 @@
-import { Switch, Route } from "react-router-dom";
-import Header from "./Header";
-import Hero from "./Hero";
-import Home from "./Home";
-import HeroPowerForm from "./HeroPowerForm";
-import Power from "./Power";
-import PowerEditForm from "./PowerEditForm";
+#!/usr/bin/env python3
 
-function App() {
-  return (
-    <div>
-      <Header />
-      <main>
-        <Switch>
-          <Route exact path="/hero_powers/new">
-            <HeroPowerForm />
-          </Route>
-          <Route exact path="/powers/:id/edit">
-            <PowerEditForm />
-          </Route>
-          <Route exact path="/powers/:id">
-            <Power />
-          </Route>
-          <Route exact path="/heroes/:id">
-            <Hero />
-          </Route>
-          <Route exact path="/">
-            <Home />
-          </Route>
-        </Switch>
-      </main>
-    </div>
-  );
-}
+from flask import Flask, make_response
+from flask_migrate import Migrate
 
-export default App;
+from models import db, Hero
+
+app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db/app.db'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+migrate = Migrate(app, db)
+
+db.init_app(app)
+
+@app.route('/')
+def home():
+    return ''
+
+
+if __name__ == '__main__':
+    app.run(port=5555)
