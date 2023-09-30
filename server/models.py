@@ -1,14 +1,15 @@
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 from sqlalchemy import Column, Integer, String, DateTime
+from sqlalchemy.orm import relationship
 db = SQLAlchemy()
 
-class Hero(db.Model):
+class Heroes(db.Model):
     __tablename__ = 'heroes'
 
     id = db.Column(db.String, primary_key=True)
     name=db.Column(db.String, nullable=False)
-    super_name=db.column(db.String, nullable=False)
+    super_name=db.Column(db.String, nullable=False)
     created_at=db.Column(db.DateTime, default=datetime.utcnow, nullable=False)
     updated_at= db.Column(db.DateTime, default=datetime.utcnow, nullable=False)
     
@@ -17,13 +18,25 @@ class Hero(db.Model):
         return f'{self.name} {self.super_name} {self.created_at} {self.updated_at}'
         
         
-class Hero_Powers(db.Model):
-    __tablename__='hero_powers'
+class Heroes_Powers(db.Model):
+    __tablename__='heroes_powers'
     
     id = db.Column(db.String, primary_key=True)
     strength=db.Column(db.String, nullable=False)
-    hero_id=db.column(db.Integer, nullable=False)
-    power_id=db.column(db.Integer, nullable=False)
+    hero_id = db.Column(
+        db.Integer, db.ForeignKey("heroes.id"), nullable=False
+    )
+
+    heroes = db.relationship(
+        "Heroes", backref=db.backref("heroes_powers", lazy=True)
+    )
+
+    power_id = db.Column(
+        db.Integer, db.ForeignKey("powers.id"), nullable=False
+    )
+    
+    power= db.relationship("Powers", backref=db.backref("heroes_powers", lazy=True))
+
     created_at=db.Column(db.DateTime, default=datetime.utcnow, nullable=False)
     updated_at= db.Column(db.DateTime, default=datetime.utcnow, nullable=False)
 
@@ -38,7 +51,7 @@ class Powers(db.Model):
     
     id = db.Column(db.String, primary_key=True)
     name=db.Column(db.String, nullable=False)
-    description=db.column(db.String, nullable=False)
+    description=db.Column(db.String, nullable=False)
     created_at=db.Column(db.DateTime, default=datetime.utcnow, nullable=False)
     updated_at= db.Column(db.DateTime, default=datetime.utcnow, nullable=False)
     
