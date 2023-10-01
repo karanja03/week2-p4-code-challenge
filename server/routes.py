@@ -72,6 +72,69 @@ class GetPowersByID(Resource):
 # Update an existing Power
 
     def patch(self, id):
+        try:
+            # Retrieve the existing Power by its ID
+            power = Powers.query.get(id)
+
+            if not power:
+                response_dict = {"error": "Power not found"}
+                return make_response(response_dict, 404)
+
+            # Get the updated description from the request JSON data
+            updated_description = request.json.get('description')
+
+            if updated_description is None:
+                response_dict = {"error": "Description is required"}
+                return make_response(response_dict, 400)
+
+            # Update the Power's description
+            power.description = updated_description
+
+            # Commit the changes to the database
+            db.session.commit()
+
+            # Serialize the updated Power using the schema
+            response = make_response(power_schema.dump(power), 200)
+
+        except Exception as e:
+            response_dict = {"error": str(e)}
+            response = make_response(response_dict, 500)
+
+        return response    
+    
+    
+    # Post route for hero_powers route    
+    
+    
+    class PostHeroPowers(Resource):
+        
+        def post(self):
+            try:
+                # Extract data from the JSON request
+                data = request.json
+
+                # Create a new HeroPower object
+                new_hero_power =Heroes_Powers(
+                    hero_id=data['hero_id'],
+                    power_id=data['power_id'],
+                    strength=data['strength']
+                )
+
+                # Add the new HeroPower to the database
+                db.session.add(new_hero_power)
+                db.session.commit()
+
+                # Serialize the created HeroPower using the schema
+                response = make_response(heroespower_schema.dump(new_hero_power), 201)
+
+            except Exception as e:
+                response_dict = {"error": str(e)}
+                response = make_response(response_dict, 500)
+
+            return response
+                
+        
+        
         
 
 
