@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 
+import React from "react";
+
+
 function Power() {
   const [{ data: power, error, status }, setPower] = useState({
     data: null,

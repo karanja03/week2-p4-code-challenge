@@ -68,6 +68,11 @@ class GetPowersByID(Resource):
             response = make_response(response_dict, 404)
 
         return response
+    
+# Update an existing Power
+
+    def patch(self, id):
+        
 
 
 
