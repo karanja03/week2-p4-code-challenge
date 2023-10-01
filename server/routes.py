@@ -15,7 +15,7 @@ class Home(Resource):
 
         return response
     
-# Define a Resource for the "/restaurants" route
+# Define a Resource for the "/heroes" route
 class GetHeroes(Resource):
     def get(self):
         # Retrieve all restaurants from the database
@@ -24,21 +24,50 @@ class GetHeroes(Resource):
         response = make_response(heroes_schema .dump(heroes), 200)
 
         return response
+    
+    # Define a Resource for the "/heroes/id" route
 
-class RestaurantByID(Resource):
+
+class GetHeroesByID(Resource):
     def get(self, id):
-        # Retrieve a single restaurant by its ID
-        restaurant = Restaurant.query.filter_by(id=id).first()
-        if restaurant:
-            # Serialize the restaurant using the schema for a single object
-            response = make_response(restaurant_schema.dump(restaurant), 200)
+        # Retrieve a single hero by its ID
+        hero =Heroes.query.filter_by(id=id).first()
+        if hero:
+            # Serialize the hero using the schema for a single object
+            response = make_response(hero_schema.dump(hero), 200)
         else:
-            # If the restaurant with the specified ID doesn't exist, return a 404 response
+            # If the hero with the specified ID doesn't exist, return a 404 response
             response_dict = {"error": "Restaurant not found"}
             response = make_response(response_dict, 404)
 
         return response
 
+# Define a Resource for the "/powers" route
+
+class GetPowers(Resource):
+    def get(self):
+        # Retrieve a single restaurant by its ID
+        powers =Powers.query.all()
+        response = make_response(powers_schema .dump(powers), 200)
+
+        return response
+    
+    # Define a Resource for the "/powers/id" route
+
+    
+class GetPowersByID(Resource):
+    def get(self, id):
+        # Retrieve a single power by its ID
+        power =Powers.query.filter_by(id=id).first()
+        if power:
+            # Serialize the hero using the schema for a single object
+            response = make_response(power_schema.dump(power), 200)
+        else:
+            # If the hero with the specified ID doesn't exist, return a 404 response
+            response_dict = {"error": "Restaurant not found"}
+            response = make_response(response_dict, 404)
+
+        return response
 
 
 
