@@ -1,7 +1,7 @@
 
-from models import   Heroes, Heroes_Powers,Powers
-from models import db
-from app import app
+from config.models import   Heroes, Heroes_Powers,Powers
+from config.models import db
+from config.app import app
 
 
 with app.app_context():
@@ -22,7 +22,7 @@ with app.app_context():
 
     # Create Heroes_Powersassociations with prices
     hp1 = Heroes_Powers(strength='Strong',  hero_id=heroes3, power_id=powers4)
-    hp2 = Heroes_Powers(strength='Weak'  hero_id=heroes2, power_id=powers5)
+    hp2 = Heroes_Powers(strength='Weak' , hero_id=heroes2, power_id=powers5)
     hp3 = Heroes_Powers(strength='Average',  hero_id=heroes1, power_id=powers3)
     hp4 = Heroes_Powers(strength='Strong',  hero_id=heroes4, power_id=powers2)
     hp5 = Heroes_Powers(strength='Average',  hero_id=heroes5, power_id=powers1)

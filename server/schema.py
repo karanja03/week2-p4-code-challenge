@@ -1,5 +1,5 @@
 from server import ma
-from server.models import Heroes, Powers, Heroes_Powers
+from server.config.models import Heroes, Powers, Heroes_Powers
 from marshmallow_sqlalchemy import SQLAlchemyAutoSchema
 
 class HeroesSchema(SQLAlchemyAutoSchema):

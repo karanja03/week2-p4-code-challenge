@@ -8,7 +8,7 @@ db = SQLAlchemy()
 class Heroes(db.Model):
     __tablename__ = 'heroes'
 
-    id = db.Column(db.String(60), primary_key=True)
+    id = db.Column(db.String(60), primary_key=True, nullable= False)
     name=db.Column(db.String(60), nullable=False)
     super_name=db.Column(db.String(60), nullable=False)
     created_at=db.Column(db.DateTime, default=datetime.utcnow, nullable=False)
@@ -33,8 +33,8 @@ class Heroes(db.Model):
 class Heroes_Powers(db.Model):
     __tablename__='heroes_powers'
     
-    id = db.Column(db.String(60), primary_key=True)
-    strength=db.Column(db.String(60), nullable=False)
+    id = db.Column(db.String(60), primary_key=True, nullable= False)
+    strength=db.Column(db.String(10), nullable=False)
     hero_id = db.Column(
         db.Integer, db.ForeignKey("heroes.id"), nullable=False
     )
@@ -64,7 +64,7 @@ class Heroes_Powers(db.Model):
 class Powers(db.Model):
     __tablename__='powers'
     
-    id = db.Column(db.String(60), primary_key=True)
+    id = db.Column(db.String(60), primary_key=True, nullable= False)
     name=db.Column(db.String(60), nullable=False)
     description=db.Column(db.String(60), nullable=False)
     created_at=db.Column(db.DateTime, default=datetime.utcnow, nullable=False)

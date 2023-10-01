@@ -1,8 +1,8 @@
 from flask import  make_response, request, jsonify
 from flask_restful import  Resource
 from server import db ,api
-from server.schema import hero_schema, heroes_schema, power_schema, powers_schema, heroespower_schema, heroespowers_schema
-from server.models import Heroes, Heroes_Powers, Powers
+from schema import hero_schema, heroes_schema, power_schema, powers_schema, heroespower_schema, heroespowers_schema
+from server.config.models import Heroes, Heroes_Powers, Powers
 
 # Define a Resource for the home route ("/")
 class Home(Resource):
