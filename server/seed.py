@@ -17,18 +17,18 @@ with app.app_context():
     powers2 = Powers(name="Flight", description = "Soaring through skies, defying gravity")
     powers3 = Powers(name="Telekinesis", description="Objects moved with focused thought.")
     powers4 = Powers(name="Invisibility", description="Unseen, hidden from plain sight.")
-    powers5 = Powers(name = "Time Manipulation", description = "Control past, present, future events.")
+    powers5 = Powers(name="Time Manipulation", description = "Control past, present, future events.")
 
 
-    # Create restaurant_pizzas associations with prices
-    rp1 = RestaurantPizza(restaurant=restaurant1, pizza=pizza1, price=12)
-    rp2 = RestaurantPizza(restaurant=restaurant1, pizza=pizza2, price=14)
-    rp3 = RestaurantPizza(restaurant=restaurant2, pizza=pizza2, price=13)
-    rp4 = RestaurantPizza(restaurant=restaurant2, pizza=pizza3, price=15)
-    rp5 = RestaurantPizza(restaurant=restaurant3, pizza=pizza1, price=11)
+    # Create Heroes_Powersassociations with prices
+    hp1 = Heroes_Powers(strength='Strong',  hero_id=heroes3, power_id=powers4)
+    hp2 = Heroes_Powers(strength='Weak'  hero_id=heroes2, power_id=powers5)
+    hp3 = Heroes_Powers(strength='Average',  hero_id=heroes1, power_id=powers3)
+    hp4 = Heroes_Powers(strength='Strong',  hero_id=heroes4, power_id=powers2)
+    hp5 = Heroes_Powers(strength='Average',  hero_id=heroes5, power_id=powers1)
 
 # Add objects to the session and commit to the database
-    db.session.add_all([restaurant1, restaurant2, restaurant3, pizza1, pizza2, pizza3, rp1, rp2, rp3, rp4, rp5])
+    db.session.add_all([heroes1, heroes2, heroes3, heroes4, heroes5, powers1, powers2, powers3, powers4, powers5, hp1,  hp2, hp3 , hp4, hp5])
     db.session.commit()
 
 print("Data seeded successfully.")
