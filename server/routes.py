@@ -106,32 +106,44 @@ class GetPowersByID(Resource):
     # Post route for hero_powers route    
     
     
-    class PostHeroPowers(Resource):
+class PostHeroPowers(Resource):
         
-        def post(self):
-            try:
-                # Extract data from the JSON request
-                data = request.json
+    def post(self):
+        try:
+            # Extract data from the JSON request
+            data = request.json
 
-                # Create a new HeroPower object
-                new_hero_power =Heroes_Powers(
-                    hero_id=data['hero_id'],
-                    power_id=data['power_id'],
-                    strength=data['strength']
-                )
+            # Create a new HeroPower object
+            new_hero_power =Heroes_Powers(
+                hero_id=data['hero_id'],
+                power_id=data['power_id'],
+                strength=data['strength']
+            )
 
-                # Add the new HeroPower to the database
-                db.session.add(new_hero_power)
-                db.session.commit()
+            # Add the new HeroPower to the database
+            db.session.add(new_hero_power)
+            db.session.commit()
 
-                # Serialize the created HeroPower using the schema
-                response = make_response(heroespower_schema.dump(new_hero_power), 201)
+            # Serialize the created HeroPower using the schema
+            response = make_response(heroespower_schema.dump(new_hero_power), 201)
 
-            except Exception as e:
+        except Exception as e:
                 response_dict = {"error": str(e)}
                 response = make_response(response_dict, 500)
 
-            return response
+        return response
+        
+api.add_resource(Home, "/")
+# Add the PostHeroPowers resource to handle the route '/heroespowers'
+api.add_resource(PostHeroPowers, "/heroespowers")
+# Add the GetPowersByID resource to handle the "/powers/<int:id>" route
+api.add_resource(GetPowersByID, "/powers/<int:id>")
+# Add the GetHeroesByID resource to handle the "/heroes/<int:id>" route
+api.add_resource(GetHeroesByID, "/heroes/<int:id>")
+# Add the  Powers resource to handle the "/ powers" route
+api.add_resource( GetPowers, "/powers")
+# Add the Heroes resource to handle the "/heroes" route
+api.add_resource(GetHeroes, "/heroes")
                 
         
         

@@ -1,32 +1,3 @@
-# from server.config.models import Heroes, Powers, Heroes_Powers
-# from server.config.app import db
-
-# # Create heroes
-# heroes1 = Heroes(name="John Black", super_name="SuperMan")
-# heroes2 = Heroes(name="Rock Bottom", super_name="BatMan")
-# heroes3 = Heroes(name="Jason Starthman", super_name="IronMan")
-# heroes4 = Heroes(name="Jack Daniels", super_name="Hulk")
-# heroes5 = Heroes(name="Johny Walker", super_name="")
-
-# # Create powers
-# powers1 = Powers(name="Super Strength", description="Incredible physical power, unmatched strength")
-# powers2 = Powers(name="Flight", description="Soaring through skies, defying gravity")
-# powers3 = Powers(name="Telekinesis", description="Objects moved with focused thought.")
-# powers4 = Powers(name="Invisibility", description="Unseen, hidden from plain sight.")
-# powers5 = Powers(name="Time Manipulation", description="Control past, present, future events.")
-
-# # Create Heroes_Powers associations with strengths
-# hp1 = Heroes_Powers(strength='Strong', hero=heroes3, power=powers4)
-# hp2 = Heroes_Powers(strength='Weak', hero=heroes2, power=powers5)
-# hp3 = Heroes_Powers(strength='Average', hero=heroes1, power=powers3)
-# hp4 = Heroes_Powers(strength='Strong', hero=heroes4, power=powers2)
-# hp5 = Heroes_Powers(strength='Average', hero=heroes5, power=powers1)
-
-# # Add objects to the session and commit to the database
-# db.session.add_all([heroes1, heroes2, heroes3, heroes4, heroes5, powers1, powers2, powers3, powers4, powers5, hp1, hp2, hp3, hp4, hp5])
-# db.session.commit()
-
-# print("Data seeded successfully.")
 
 
 
