@@ -134,16 +134,17 @@ class PostHeroPowers(Resource):
         return response
         
 api.add_resource(Home, "/")
-# Add the PostHeroPowers resource to handle the route '/heroespowers'
-api.add_resource(PostHeroPowers, "/heroespowers")
+# Add the Heroes resource to handle the "/heroes" route
+api.add_resource(GetHeroes, "/heroes")
+
+# Add the PostHeroPowers resource to handle the route '/heropowers'
+api.add_resource(PostHeroPowers, "/hero_powers")
 # Add the GetPowersByID resource to handle the "/powers/<int:id>" route
 api.add_resource(GetPowersByID, "/powers/<int:id>")
 # Add the GetHeroesByID resource to handle the "/heroes/<int:id>" route
 api.add_resource(GetHeroesByID, "/heroes/<int:id>")
 # Add the  Powers resource to handle the "/ powers" route
 api.add_resource( GetPowers, "/powers")
-# Add the Heroes resource to handle the "/heroes" route
-api.add_resource(GetHeroes, "/heroes")
                 
         
         
