@@ -1,8 +1,8 @@
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 from sqlalchemy.orm import validates
-
-db = SQLAlchemy()
+# from sqlalchemy_serializer import SerializerMixin
+from config import db
 
 # Heroes model
 class Heroes(db.Model):
