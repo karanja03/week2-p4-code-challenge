@@ -2,7 +2,7 @@
 
 
 from config.models import Heroes, Powers, Heroes_Powers
-from config.app import db, app
+from server.app import db, app
 import random
 
 
